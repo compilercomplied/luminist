@@ -1,0 +1,35 @@
+@media (prefers-color-scheme: light) {
+
+  :root {
+    --bg: #f2f1eb;
+    --fg: #445128;
+    --accent-primary: #e9766d;
+    --accent-secondary: #83a146;
+    --accent-tertiary: #b1534c;
+
+    --bold-fg: #202613;
+  }
+
+}
+
+@media (prefers-color-scheme: dark) {
+
+  :root {
+    --bg: #121b21;
+    --fg: #e88d7a;
+    --accent-primary: #8ebcbf;
+    --accent-secondary: #b1534c;
+    --accent-tertiary: #448088;
+
+    --bold-fg: #e8798b;
+  }
+
+}
+
+
+* {
+
+	background-color: var(--bg);
+	color: var(--fg);
+
+}
