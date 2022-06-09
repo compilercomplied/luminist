@@ -1,9 +1,10 @@
-
+import { TransactionList } from "./transactions/transaction-list";
 
 export const DashboardPage = () => {
-
-	return (
-	<div>welcome back</div>
-	)
-
-}
+  return (
+    <div>
+      <div>welcome back</div>
+      <TransactionList />
+    </div>
+  );
+};
