@@ -6,18 +6,15 @@ import { LoadingPage } from "../pages/public/loading/loading";
 import { NotFoundPage } from "../pages/public/notfound/not-found";
 import { PublicPage } from "../pages/public/public";
 
-
 const protectRoute = (page: React.ReactElement) => {
   const { isAuthenticated, isLoading } = useAuth0();
 
   const pageToRender = isAuthenticated ? page : <Navigate to="/login" />;
 
-  return isLoading ? <LoadingPage/> : pageToRender;
+  return isLoading ? <LoadingPage /> : pageToRender;
 };
 
-
 export const AppRouter = () => {
-
   return (
     <BrowserRouter>
       <Routes>

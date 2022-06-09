@@ -1,5 +1,4 @@
 @media (prefers-color-scheme: light) {
-
   :root {
     --bg: #f2f1eb;
     --fg: #445128;
@@ -9,11 +8,9 @@
 
     --bold-fg: #202613;
   }
-
 }
 
 @media (prefers-color-scheme: dark) {
-
   :root {
     --bg: #121b21;
     --fg: #e88d7a;
@@ -23,13 +20,9 @@
 
     --bold-fg: #e8798b;
   }
-
 }
 
-
 * {
-
-	background-color: var(--bg);
-	color: var(--fg);
-
+  background-color: var(--bg);
+  color: var(--fg);
 }

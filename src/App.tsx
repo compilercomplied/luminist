@@ -10,9 +10,9 @@ function App() {
       clientId={process.env.REACT_APP_OAUTH_APP_ID ?? ""}
       redirectUri={window.location.origin}
       audience={process.env.REACT_APP_OAUTH_AUDIENCE ?? ""}
-			scope={process.env.REACT_APP_OAUTH_SCOPE ?? ""}
+      scope={process.env.REACT_APP_OAUTH_SCOPE ?? ""}
     >
-      <AppRouter/>
+      <AppRouter />
     </Auth0Provider>
   );
 }

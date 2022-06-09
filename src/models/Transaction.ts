@@ -1,6 +1,3 @@
-
 export type Transaction = {
-
-	description: string
-
-}
+  description: string;
+};
