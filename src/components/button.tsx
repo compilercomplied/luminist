@@ -1,6 +1,6 @@
 export type ButtonProps = {
   text: string;
-  onClick: (args: any) => {};
+  onClick: (...args: any) => any | void;
 };
 
 export const Button = (props: ButtonProps) => {
