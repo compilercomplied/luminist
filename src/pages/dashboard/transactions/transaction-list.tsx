@@ -15,12 +15,15 @@ function buildPage(pageNumber: number): Page {
 export const TransactionList = () => {
   const [transactions, setTransactions] = useState([] as Transaction[]);
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
+      setLoading(true);
       const tran = await getTransactions(
         new TransactionListRequest(buildPage(page))
       );
+      setLoading(false);
 
       setTransactions((t) => t.concat(tran));
     })();
@@ -37,6 +40,7 @@ export const TransactionList = () => {
           <TransactionItem {...t} />
         ))}
       </ul>
+      <div hidden={!loading}>loading</div>
       <Button text={"load more"} onClick={nextPage} />
     </div>
   );
