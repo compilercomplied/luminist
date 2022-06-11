@@ -5,7 +5,10 @@ export class TransactionListRequest {
   constructor(public page = new Page()) {}
 }
 
-const transactions: Transaction[] = Array.from(Array(100).keys()).map(
+const tranNumber = Math.round((1.2 - Math.random()) * 100);
+console.log(tranNumber);
+
+const transactions: Transaction[] = Array.from(Array(tranNumber).keys()).map(
   (n) => <Transaction>{ description: `Transaction number: ${n + 1}` }
 );
 export const getTransactions = async (
