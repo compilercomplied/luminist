@@ -25,18 +25,16 @@ class OAuthConfig extends Configuration {
 
   validate(): void {
     if (this.appID === "") {
-      throw new Error(`Non-valid oauth secret ${{ secret: this.appID }}`);
+      throw new Error(`Non-valid oauth app id: ${this.appID}`);
     }
     if (this.audience === "") {
-      throw new Error(
-        `Non-valid oauth audience ${{ audience: this.audience }}`
-      );
+      throw new Error(`Non-valid oauth audience: ${this.audience}`);
     }
     if (this.domain === "") {
-      throw new Error(`Non-valid oauth domain ${{ domain: this.audience }}`);
+      throw new Error(`Non-valid oauth domain: ${this.audience}`);
     }
     if (this.scope === "") {
-      throw new Error(`Non-valid oauth scope ${{ scope: this.audience }}`);
+      throw new Error(`Non-valid oauth scope: ${this.audience}`);
     }
   }
 }
@@ -53,7 +51,7 @@ class APIConfig extends Configuration {
 
   validate(): void {
     if (this.baseURI === "") {
-      throw new Error(`Non-valid API base URI ${{ baseURI: this.baseURI }}`);
+      throw new Error(`Non-valid API base URI: [${this.baseURI}]`);
     }
   }
 }
