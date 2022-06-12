@@ -2,15 +2,16 @@ import React from "react";
 import "./App.css";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { AppRouter } from "./routing/app-router";
+import { OAuthOptions } from "./app/configuration";
 
 function App() {
   return (
     <Auth0Provider
-      domain={process.env.REACT_APP_OAUTH_DOMAIN ?? ""}
-      clientId={process.env.REACT_APP_OAUTH_APP_ID ?? ""}
+      domain={OAuthOptions.domain}
+      clientId={OAuthOptions.appID}
       redirectUri={window.location.origin}
-      audience={process.env.REACT_APP_OAUTH_AUDIENCE ?? ""}
-      scope={process.env.REACT_APP_OAUTH_SCOPE ?? ""}
+      audience={OAuthOptions.audience}
+      scope={OAuthOptions.scope}
     >
       <AppRouter />
     </Auth0Provider>
