@@ -41,5 +41,23 @@ class OAuthConfig extends Configuration {
   }
 }
 
+class APIConfig extends Configuration {
+  public readonly baseURI: string = "";
+
+  constructor() {
+    super();
+    this.baseURI = process.env[`${PREFIX}API_BASE_URI`] ?? "";
+
+    this.validate();
+  }
+
+  validate(): void {
+    if (this.baseURI === "") {
+      throw new Error(`Non-valid API base URI ${{ baseURI: this.baseURI }}`);
+    }
+  }
+}
+
 // -----------------------------------------------------------------------------
 export const OAuthOptions = new OAuthConfig();
+export const APIOptions = new APIConfig();

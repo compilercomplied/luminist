@@ -1,7 +1,3 @@
-
-
 export class Page {
-
-	constructor(public skip = 1, public take = 10) { }
-
+  constructor(public skip = 1, public number = 10) {}
 }

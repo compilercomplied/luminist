@@ -1,36 +1,36 @@
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { Page } from "../abc/api-models";
+import { APIOptions } from "../app/configuration";
+import { LS } from "../constants";
 import { Transaction } from "../models/Transaction";
 
 export class TransactionListRequest {
   constructor(public page = new Page()) {}
 }
 
-const tranNumber = Math.round((1.2 - Math.random()) * 100);
-console.log(tranNumber);
+const transactionsURI = `${APIOptions.baseURI}/transactions`;
 
-const transactions: Transaction[] = Array.from(Array(tranNumber).keys()).map(
-  (n) => <Transaction>{ description: `Transaction number: ${n + 1}` }
-);
 export const getTransactions = async (
   req: TransactionListRequest
 ): Promise<Transaction[]> => {
-  const lowerBound = 0;
-  const upperBound = transactions.length;
+  const fullquery = `${transactionsURI}?page.skip=${req.page.skip}&page.number=${req.page.number}`;
 
-  const lowerConstraint =
-    lowerBound > (req.page.skip - 1) * req.page.take
-      ? lowerBound
-      : (req.page.skip - 1) * req.page.take;
+  const token = localStorage.getItem(LS.token);
 
-  const upperConstraint =
-    upperBound < req.page.skip * req.page.take
-      ? upperBound
-      : req.page.skip * req.page.take;
+  const headers: AxiosRequestConfig = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
-  const value = transactions.slice(lowerConstraint, upperConstraint);
+  try {
+    const response: AxiosResponse = await axios.get(fullquery, headers);
+    if (response.status !== 200) {
+      console.log(`Error querying API ${{ response: response.data }}`);
+    }
 
-  // fake delay
-  await new Promise((r) => setTimeout(r, Math.random() * 1000));
-
-  return value;
+    return response.data as Transaction[];
+  } catch (e) {
+    throw e;
+  }
 };
